@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BlackOut</title>
+  <script src="cadastrarLive.js"></script>
+  <script src="buscalive.js"></script>
+  <style>
+    body {
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+      padding: 0px;
+      margin: 0px;
+    }
+
+    #container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: calc(100vh - 140px);
+      background-color: black;
+    }
+
+    header {
+      background-color: rgba(0, 0, 0, 0.850);
+      height: 100px;
+      padding: 20px;
+    }
+
+    .container-header {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+    }
+
+    .font-100 {
+      font-size: 100px;
+    }
+
+    .center {
+      text-align: center;
+      color: yellow;
+    }
+
+    .text-branco {
+      color: white;
+    }
+
+    .lista-menu,
+    li {
+      margin-right: 0px;
+    }
+
+    .button-deslogar {
+      color: black;
+      background-color: white;
+      border: solid 1px grey;
+      border-radius: 7px;
+      cursor: pointer;
+    }
+
+    .button-deslogar:hover {
+      box-shadow: 0px 0px 50px 10px rgb(255, 255, 255);
+    }
+
+
+
+    form {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border: solid 1px grey;
+      border-radius: 7px;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.85);
+    }
+
+    input {
+      width: 400px;
+      margin: 10px;
+      padding: 10px;
+      border-radius: 5px;
+      border: solid 1px grey;
+    }
+
+    input[type="submit"] {
+      color: black;
+      background-color: white;
+      border: solid 1px grey;
+      border-radius: 7px;
+      cursor: pointer;
+      width: 300px;
+    }
+
+
+    input[type="submit"]:hover {
+      box-shadow: 0px 0px 50px 10px rgb(255, 255, 255);
+    }
+
+    #cadastrar-link {
+      color: white;
+      text-decoration: none;
+
+    }
+
+    #cadastrar-link:hover {
+      text-decoration: underline;
+    }
+
+
+    #tabela-lives th,
+    #tabela-lives td {
+      padding: 10px;
+      border: 1px solid #ccc;
+    }
+
+    #tabela-lives th {
+      background-color: #333;
+      color: #fff;
+      text-align: left;
+    }
+
+    #tabela-lives tbody tr {
+      background-color: #eee;
+    }
+
+    #tabela-lives tbody tr:hover {
+      background-color: #ccc;
+    }
+
+
+
+    .tabela-com-barra-de-rolagem {
+      max-height: 300px;
+      overflow-y: auto;
+      margin-top: 2%;
+      max-width: 850px;
+      max-height: 300px;
+      word-break: break-all;
+    }
+
+    .centralizar-botao {
+      display: flex;
+      justify-content: center;
+      margin-top: 2%;
+
+
+    }
+
+    .button-deslogar {
+      width: 200px;
+      height: 50px;
+      border-radius: 10px;
+      background-color: #333;
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  </style>
+
+</head>
+
+<body>
+  <header>
+    <div class="container-header">
+      <div class="font-100 center">
+        BlackOut
+      </div>
+    </div>
+  </header>
+  <div id="container">
+
+    <form id="cadastro-form" action="/logado" method="post">
+      <h1>Cadastro de Live</h1>
+      <div>
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" required>
+      </div>
+      <div>
+        <label for="data">Data:</label>
+        <input type="datetime-local" id="data" name="data" required>
+      </div>
+      <div>
+        <label for="categoria">Categoria:</label>
+        <input type="text" id="categoria" name="categoria" required>
+      </div>
+      <div>
+        <label for="link">link que da live:</label>
+        <input type="text" id="link" name="descricao" required>
+      </div>
+      <a class="text-branco" href="./logado.html"><button type="submit">Cadastrar evento</button></a>
+    </form>
+    <div class="tabela-com-barra-de-rolagem">
+      <table id="tabela-lives">
+        <thead>
+
+          <tr>
+            <th colspan="4" style="text-align: center;">Lives cadastradas</th>
+          <tr>
+            <th>Nome</th>
+            <th>Data</th>
+            <th>Categoria</th>
+            <th>Descrição</th>
+          </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+      </table>
+    </div>
+
+    <div class="centralizar-botao">
+      <a class="text-branco" href="/logout"><button class="button-deslogar">Deslogar</button></a>
+    </div>
+
+
+  </div>
+
+
+  <script>
+
+    fetch('/buscarlives')
+      .then((response) => response.json())
+      .then((data) => {
+
+        const tabelaLives = document.getElementById('tabela-lives');
+        const tbody = tabelaLives.querySelector('tbody');
+
+
+        tbody.innerHTML = '';
+
+
+        data.forEach((live) => {
+          const row = document.createElement('tr');
+          row.innerHTML = `
+                <td>${live.nome}</td>
+                <td>${new Date(live.data).toLocaleString()}</td>
+                <td>${live.categoria}</td>
+                <td>${live.descricao}</td>
+              `;
+
+          tbody.appendChild(row);
+        });
+      })
+      .catch((error) => {
+        console.error('Erro ao buscar dados das lives:', error);
+      });
+  </script>
+</body>
+
+</html>

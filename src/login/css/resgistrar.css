@@ -1,0 +1,99 @@
+body {
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 0px;
+    margin: 0px;
+}
+
+#container-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 140px);
+    background-color: black;
+}
+
+header {
+    background-color: rgba(0, 0, 0, 0.850);
+    height: 100px;
+    padding: 20px;
+}
+
+.container-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.font-100 {
+    font-size: 100px;
+}
+
+.center {
+    text-align: center;
+    color: yellow;
+}
+
+.lista-menu {
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.lista-menu,
+li {
+    margin-right: 0px;
+}
+
+#cadastrar-link {
+    color: white;
+    text-decoration: none;
+
+}
+
+#cadastrar-link:hover {
+    text-decoration: underline;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: solid 1px grey;
+    border-radius: 7px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.85);
+}
+
+input {
+    width: 300px;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    border: solid 1px grey;
+}
+
+input[type="submit"] {
+    color: black;
+    background-color: white;
+    border: solid 1px grey;
+    border-radius: 7px;
+    cursor: pointer;
+    width: 300px;
+}
+
+input[type="submit"]:hover {
+    box-shadow: 0px 0px 50px 10px rgb(255, 255, 255);
+}
+
+#cadastrar-link {
+    color: white;
+    text-decoration: none;
+
+}
+
+#cadastrar-link:hover {
+    text-decoration: underline;
+}

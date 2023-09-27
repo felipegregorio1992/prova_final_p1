@@ -1,0 +1,151 @@
+body {
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 0px;
+    margin: 0px;
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 140px);
+    background-color: black;
+}
+
+header {
+    background-color: rgba(0, 0, 0, 0.850);
+    height: 100px;
+    padding: 20px;
+}
+
+.container-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.font-100 {
+    font-size: 100px;
+}
+
+.center {
+    text-align: center;
+    color: yellow;
+}
+
+.text-branco {
+    color: white;
+}
+
+.lista-menu,
+li {
+    margin-right: 0px;
+}
+
+.button-deslogar {
+    color: black;
+    background-color: white;
+    border: solid 1px grey;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.button-deslogar:hover {
+    box-shadow: 0px 0px 50px 10px rgb(255, 255, 255);
+}
+
+
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: solid 1px grey;
+    border-radius: 7px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.85);
+}
+
+input {
+    width: 400px;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    border: solid 1px grey;
+}
+
+input[type="submit"] {
+    color: black;
+    background-color: white;
+    border: solid 1px grey;
+    border-radius: 7px;
+    cursor: pointer;
+    width: 300px;
+}
+
+
+input[type="submit"]:hover {
+    box-shadow: 0px 0px 50px 10px rgb(255, 255, 255);
+}
+
+#cadastrar-link {
+    color: white;
+    text-decoration: none;
+
+}
+
+#cadastrar-link:hover {
+    text-decoration: underline;
+}
+
+
+#tabela-lives th,
+#tabela-lives td {
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+#tabela-lives th {
+    background-color: #333;
+    color: #fff;
+    text-align: left;
+}
+
+#tabela-lives tbody tr {
+    background-color: #eee;
+}
+
+#tabela-lives tbody tr:hover {
+    background-color: #ccc;
+}
+
+
+
+.tabela-com-barra-de-rolagem {
+    max-height: 300px;
+    overflow-y: auto;
+    margin-top: 2%;
+    max-width: 850px;
+    max-height: 300px;
+    word-break: break-all;
+}
+
+.centralizar-botao {
+    display: flex;
+    justify-content: center;
+    margin-top: 2%;
+}
+
+.button-deslogar {
+    width: 200px;
+    height: 50px;
+    border-radius: 10px;
+    background-color: #333;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
